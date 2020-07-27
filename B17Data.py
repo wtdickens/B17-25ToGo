@@ -109,12 +109,15 @@ hitLocations = {1: "the side",
                 9: "the ailerons",
                 10: "an empty ammo case"}
 
+damageStatus = {"Engine": "OK",
+                "Frame": "OK"}
+
 bomberData = {"Skill": -2,
               "AtG": -2,
               "AtA": ata,
               "Tactics": [],
               "Position": "middle",
-              "DamageStatus": "undamaged"
+              "DamageStatus": damageStatus,
               "CrewNickNames": crewNickNames,
               "CrewNames": crewNames,
               "CrewPositions": crewPositions,
