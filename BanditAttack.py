@@ -40,7 +40,7 @@ if year == 1942:  # Modify for year
 elif year == 1944:
     modifier = -1
 
-if damageStatus:  # Modify for damaged status
+if bomberData["DamageStatus"] != "undamaged":  # Modify for damaged status
     modifier += 5
  
 position = bomberData["Position"] # Modify for position in formation
@@ -55,7 +55,7 @@ roll = d10() + modifier() # Modified die roll
 
 if roll < 8:  # No attack
     # No bandit attack. Return safe text.
-    return("Bomber Group wards off attack. You are safe for now.")
+    return("OK\nBomber Group wards off attack. You are safe for now.")
 else:
     # Bomber is attacked.  Compute Results.
     
@@ -113,7 +113,7 @@ else:
                 bomberData["XP"] += 1
             else:
                 returnText += celebrate + "\n"
-                return(returnText)
+                return("OK\n + returnText)
         
         #Bandit fires 
         else:
@@ -125,12 +125,14 @@ else:
             elif year == 1944:
                 banditAtA += 1
                     
-            if event <= 2: # Apply event modifier
+            if event == 1: # Apply event modifier
                 banditAtA += 1
+            elif event == 2:
+                banditAtA -= 1
             
             # Results of bandid fire
             if d10() < banditAtA:  # Miss
-                returnText += "Whew that was close!/n"
+                returnText += "OK\nWhew that was close!\n"
                 return(returnText)
             else:  # Hit
                 returnText += "We're hit! We're hit!\n"
@@ -139,10 +141,44 @@ else:
                 # Hit other than crew member
                 if hitLocaation >3 and <=7:
                     returnText += "Damage report!\n"
+                    # Superficial damage
                     if hitLocaation <=3:
-                        returnText +=("Nothing serious. Some holes in the "
-                                      + bomberData["HitPositions][hitLocation])
-                else: # Crew member is hit
+                        returnText +=("Nothing serious. Just some holes in "
+                                      + bomberData["HitLocations][hitLocation])
+                    # Frame Damage
+                    elif hitLocation == 8:
+                        # If already damaged shot down
+                        if bomberData["DamageStatus"] == "framedamage":
+                            returnText += "We're going down! Hit the silk!\n"\
+                            "...\n...\n...\n...\n...\n"                      \
+                            "You land safely but are picked up by a German\n"\
+                            "patrol and spend the rest of the war in a\n"      \
+                            "prison camp"
+                            return("Shot Down\n" + returnText)
+                        # If not damaged Frame damaged
+                        else:
+                            bomberData["DamageStatus"] = "framedamage"
+                            returnText += "Wingsapr wad hit bad, but it"  \
+                                "should hold for now."
+                            return("OK/n" + returnText)
+                    # Engine Hit
+                    elif hitLocation == 9:
+                        if bomberData["DamageStatus"] == "enginedamage":
+                            returnText += "Engines 3 and 4 gone\n "       \
+                                "We're going down. Hit the silk!\n"       \ 
+                                "...\n...\n...\n...\n...\n"               \
+                                "You land safely and are picked up by\n"  \
+                                "the underground who smuggle you into\n"  \
+                                "Switerland where you spend the rest of\n"\
+                                "the war."
+                                return("Shot Down/n" + returnText)
+                            
+                            
+                        
+                        
+                            
+                    
+                    else: # Crew member is hit
                     returnText += "I'm hit!\n"
                     whoHit = d10()
                     if whoHit == 1:

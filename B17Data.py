@@ -114,6 +114,7 @@ bomberData = {"Skill": -2,
               "AtA": ata,
               "Tactics": [],
               "Position": "middle",
+              "DamageStatus": "undamaged"
               "CrewNickNames": crewNickNames,
               "CrewNames": crewNames,
               "CrewPositions": crewPositions,
