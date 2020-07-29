@@ -30,6 +30,12 @@ banditType = {1 : "BF-109",
               9 : "ME-410",
               10 : "ME-410"}
 
+banditDefense = {"BF-109": ,
+                 "FW-190": ,
+                 "BF-110": ,
+                 "ME-410" 
+                 }
+
 # Celebration text
 celebrate = {1: "YeeeeHaw! Smoked em!",
              2: "I got him! I got him!",

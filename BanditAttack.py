@@ -27,7 +27,8 @@ outcome : python string
 
 @author: wtdic
 """
-from B17dice import d10
+from B17Dice import d10
+from crewFires import bomberFires
 
 # Extract Bomber Data dictionary
 bomberData = DataDict["BomberData"]
@@ -61,6 +62,7 @@ else:
     
     # Find Bandit Type
     banditType = dataDict["BanditType"][d10()]
+    banditDefense = dataDict["BanditDefense"][banditType]
     returnText = banditType
     
     # Determine direction of attack
@@ -97,24 +99,16 @@ else:
         returnText += "[Tracer fire whips past the cockpit]\n}"
     
     # Determine outcome
+        
     # If bomber crew is fast
     # Bomber crew fires first
     if fastQ:
-        ata = bomberData["AtA"][position]
-        if event == 2:
-            ata -= 1
-        
-        # Bandit shot down
-        if d10() >= ata:
-            celebrate = dataDict["Celebrate"][d10()]
-            pos = celebrate.find("{")
-            if pos >=0:
-                returnText += (celebrate[:pos] + banditType +
-                               celebrate[pos+2:] + "\n")
-                bomberData["XP"] += 1
-            else:
-                returnText += celebrate + "\n"
-                return("OK\n + returnText)
+        banditStatus, returnText = bomberFires(position,
+                                               event,
+                                               banditDefense,
+                                               bomberData, 
+                                               returnText,
+                                               dataDict)
         
     #Bandit fires 
     else:
