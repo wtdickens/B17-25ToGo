@@ -9,17 +9,23 @@ def bomberFires(position, event, banditDefense,
     ----------
     position: python string 
         direction from which bandit is attacking
-        bomberData: python dictionary
+    event: python integer (1-10)
+        Event for current mission
+    banditDefense: python integer
+        Adjustment to bomber ata for bandit defense
+    bomberData: python dictionary
         dictionary containing bomber data
-        dataDict: python dictionary 
-    contains all game data
+    returnText: python string
+        text string containing color dialog and events
+    dataDict: python dictionary 
+        contains all game data
     
     Returns
     -------
     result: python string
         was bandit shot down ("shot down","escaped")
-    returnText:
-        text string containing colot dialog and events
+    returnText: python string
+        text string containing color dialog and events
 
     @author: wtdic
     """
