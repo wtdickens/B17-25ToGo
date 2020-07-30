@@ -110,8 +110,13 @@ else:
                                                returnText,
                                                dataDict)
         
-    #Bandit fires 
+    # Bandit fires if crew is slow
     else:
+        returnText = banditFires(position,
+                                 event,
+                                 bomberData
+                                 returnText,
+                                 dataDict)
         returnText += "[Tracer fire whips past the cockpit]\n}"
         # Determine bandit to hit number
         banditAtA = dataDict["BanditData"][banditType]
