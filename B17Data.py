@@ -28,13 +28,14 @@ banditType = {1 : "BF-109",
               7 : "BF-110",
               8 : "BF-110",
               9 : "ME-410",
-              10 : "ME-410"}
+              10 : "ME-410"
+             }
 
-banditDefense = {"BF-109": ,
-                 "FW-190": ,
-                 "BF-110": ,
-                 "ME-410" 
-                 }
+banditAtA = {"BF-109": 8,
+             "FW-190": 6,
+             "Bf-110": 9,
+             "ME-410": 7
+             }
 
 # Celebration text
 celebrate = {1: "YeeeeHaw! Smoked em!",
@@ -47,7 +48,7 @@ celebrate = {1: "YeeeeHaw! Smoked em!",
              8: "Got 'em! One less Nazi prick",
              9: "Bandit down.",
              10: "Whew! Got 'em"
-             }
+            }
 
 
 # Bomber Data
@@ -56,6 +57,8 @@ ata = {"Front": 9,
        "Starboard": 8,
        "Rear": 7
        }
+
+damageStatus = {"Engine": "OK", "Frame": "OK"}
 
 crewStatus = {1: "healthy",
               2: "healthy",
@@ -67,7 +70,7 @@ crewStatus = {1: "healthy",
               8: "healthy",
               9: "healthy",
               10: "healthy"
-              }
+             }
 
 crewNickNames = {1: "Captain",
              2: "Lieutenant",
@@ -78,7 +81,8 @@ crewNickNames = {1: "Captain",
              7: "Lucky",
              8: "Fats",
              9: "Cooler",
-             10: "Aces"}
+             10: "Aces"
+            }
 
 crewNames = {1: "Wilson",
              2: "Johnson",
@@ -90,7 +94,7 @@ crewNames = {1: "Wilson",
              8: "Miller",
              9: "Jones",
              10: "O'Leary"
-             }
+            }
 
 crewPositions = {11: "Pilot",
                  2: "Co-pilot",
@@ -102,7 +106,7 @@ crewPositions = {11: "Pilot",
                  8: "Port Waist Gunner",
                  9: "Stbd. Waist Gunner",
                  10: "Tail Gunner"
-                 }
+                }
 
 hitLocations = {1: "the side",
                 2: "the top",
@@ -113,10 +117,9 @@ hitLocations = {1: "the side",
                 7: "the front window",
                 8: "the wing",
                 9: "the ailerons",
-                10: "an empty ammo case"}
+                10: "an empty ammo case"
+            }
 
-damageStatus = {"Engine": "OK",
-                "Frame": "OK"}
 
 bomberData = {"Skill": -2,
               "AtG": -2,
@@ -124,19 +127,19 @@ bomberData = {"Skill": -2,
               "Tactics": [],
               "Position": "middle",
               "DamageStatus": damageStatus,
+              "CrewStatus": crewStatus,
               "CrewNickNames": crewNickNames,
               "CrewNames": crewNames,
               "CrewPositions": crewPositions,
               "HitLocations": hitLocations,
-              
-              
-    }
+             }
 
 
 
 DataDict = {"BanditType" : banditType,
+            "BanditAtA": banditAtA,
             "Celebrate" : celebrate,
-            "BomberData" : bomberData,
-            }
+            "BomberData" : bomberData
+           }
 
 
