@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-def BanditAttack(year, position, event, damageStatus, dataDict)
+def BanditAttack(year, position, event,dataDict)
 """
 Created on Sun Jul 26 13:44:49 2020
 
@@ -12,9 +12,6 @@ year : python integer (1942-44)
     The year the action is taking place
 position : python string ("middle","lead","front","rear")
     The B-17s position in the formation
-damageStatus : python binary
-    True = damaged
-    False = OK
 event: python integer (1-10)
     The number of the event for mission
 dataDict : Python dictionary
@@ -33,6 +30,14 @@ from crewFires import bomberFires
 # Extract Bomber Data dictionary
 bomberData = DataDict["BomberData"]
 
+# Extract Damage status
+engineStatus = bomberData["DamageStatus"]["Engine"]
+frameStatus = bomberData["DamageStatus"]["Frame"]
+if engineStatus == "OK" and frameStatus == "OK":
+    damageStatus = "undamaged"
+else:
+    damageStatus = "damaged"
+
 # Determine if attack on bomber takes place
 # Find modifier for bandit attack on plane
 modifier = 0  
@@ -40,8 +45,7 @@ if year == 1942:  # Modify for year
     modifier = -2
 elif year == 1944:
     modifier = -1
-
-if bomberData["DamageStatus"] != "undamaged":  # Modify for damaged status
+damageStatus != "undamaged":  # Modify for damaged status
     modifier += 5
  
 position = bomberData["Position"] # Modify for position in formation

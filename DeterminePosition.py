@@ -14,8 +14,8 @@ def DeterminePosition(EventDict, DataDict):
         
     Returns
     -------
-    Position : text
-        Position of B-17 in formation
+    DataDict : python dictionary
+        Modified DataDict to record formation position
 
     @author: wtdic
     """
@@ -36,7 +36,9 @@ def DeterminePosition(EventDict, DataDict):
     if EventDict["EventSwitches"]["Bump2Lead"]:
         position = "lead"
         
-    return(position)
+    DataDict["BomberData"]["Position"] = position
+        
+    return(DataDict)
     
     
 

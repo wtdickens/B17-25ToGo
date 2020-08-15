@@ -26,10 +26,47 @@ for i in range(25):
     EventResult = DetermineEvent()
     
     # Determine Bomber position in formation
-    Position = DeterminePosition(EventResult, DataDict)
+    DataDict = DeterminePosition(EventResult, DataDict)
     
     # Determine encounters
     encounters = DetermineEcounter(year)
+    
+    # Loop through encounters
+    for encounter in encounters:
+        
+        if encounter == "2Bandits":
+            AttackResults, dataDict = BanditAttack(year, 
+                                                   position, 
+                                                   event, 
+                                                   dataDict
+                                                   )
+            io.Report(AttackResults)
+            AttackResults, dataDict = BanditAttack(year, 
+                                                   position, 
+                                                   event, 
+                                                   dataDict
+                                                   )
+            io.Report(AttackResults)
+            
+        elif encounter == "Bandit":
+            io.Report(AttackResults)
+            AttackResults, dataDict = BanditAttack(year, 
+                                                   position, 
+                                                   event, 
+                                                   dataDict
+                                                   )
+            io.Report(AttackResults)
+            
+        elif encounter == "Flack":
+            FlackResult, dataDict = FlackAttack(DataDict)
+            io.Report(FlackResult)
+            
+        elif encounter == "BombRun":
+            BombResult, dataDict = BombRun(DataDict)
+            io.Report(BombResult)
+            
+            
+            
 
 
 
