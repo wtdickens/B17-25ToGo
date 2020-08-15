@@ -10,6 +10,7 @@ This program runs the B17 25 mission simulator
 """
 from B17Data import Data
 import B17io as io
+import DetermineEvent
 
 # Get year for mission
 year = io.GetInt((1942,1944), "What year for your mission (1942-44")
@@ -17,7 +18,9 @@ year = io.GetInt((1942,1944), "What year for your mission (1942-44")
 # Load data for the mission year
 DataDict = Data(year)
 
-DataDict
+# Loop over 25 missions in game
+for i in range(25):
+    EventResult = DetermineEvent()
 
 
 
