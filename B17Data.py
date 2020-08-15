@@ -102,7 +102,7 @@ crewPositions = {11: "Pilot",
                  4: "Bombardier",
                  5: "Engineer",
                  6: "Radio Operator",
-                 7: "Ball Gunnder",
+                 7: "Ball Gunner",
                  8: "Port Waist Gunner",
                  9: "Stbd. Waist Gunner",
                  10: "Tail Gunner"

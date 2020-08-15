@@ -27,6 +27,9 @@ for i in range(25):
     
     # Determine Bomber position in formation
     Position = DeterminePosition(EventResult, DataDict)
+    
+    # Determine encounters
+    encounters = DetermineEcounter(year)
 
 
 
