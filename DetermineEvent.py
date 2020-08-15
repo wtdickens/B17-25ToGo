@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-def DetermineEvent(year):
+def DetermineEvent():
     """
-    Created on Sun Jul 26 13:35:41 2020
+    Created on Sat August 15, 2020
 
-    This Routine initializes the data for the B17 simulation
+    This routine determines the mission event
 
     Parameters
     ----------
@@ -36,7 +36,7 @@ def DetermineEvent(year):
     BanditAttack2 = False
     
     # draw event
-    event = d10()
+    event = d10() - 1
     
     # Set event results
     if event == 0:

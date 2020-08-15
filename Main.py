@@ -11,6 +11,7 @@ This program runs the B17 25 mission simulator
 from B17Data import Data
 import B17io as io
 import DetermineEvent
+from B17Dice import d10()
 
 # Get year for mission
 year = io.GetInt((1942,1944), "What year for your mission (1942-44")
@@ -20,8 +21,12 @@ DataDict = Data(year)
 
 # Loop over 25 missions in game
 for i in range(25):
+    
+    # Determine Mission Event
     EventResult = DetermineEvent()
-
+    
+    # Determine Bomber position in formation
+    Position = DeterminePosition(EventResult, DataDict)
 
 
 
