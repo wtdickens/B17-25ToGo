@@ -21,11 +21,18 @@ Returns
 -------
 outcome : python string
     Text message describing the outcome
+    
+dataDict : python dictionary
+    updated data dictionary
+    
+shotDown : python Boolean
+    was bomber shot down?
 
 @author: wtdic
 """
 from B17Dice import d10
 from crewFires import bomberFires
+from banditFires import banditFires
 
 # Extract Bomber Data dictionary
 bomberData = DataDict["BomberData"]
@@ -37,6 +44,7 @@ if engineStatus == "OK" and frameStatus == "OK":
     damageStatus = "undamaged"
 else:
     damageStatus = "damaged"
+shotDown = False
 
 # Determine if attack on bomber takes place
 # Find modifier for bandit attack on plane
@@ -82,16 +90,16 @@ else:
     roll = modifier + d10() # Roll for direction
     if roll < 4 or event == 3:
         attackDirection = "rear"
-        returnText += " attacking from the rear!\n"
+        returnText += " Bandit! 6 O'clock!\n"
     elif roll <6:
         attackDirection = "port"
-        returnText += " attacking port side!\n"
+        returnText += " Bandit! 9 O'clock!\n"
     elif roll < 8:
         attackDirection = "starboard"
-        returnText += " attacking starboard!\n"
+        returnText += " Bandit! 3 O'clock!\n"
     else:
         attackDirection = "front"
-        returnText += " dead ahead!\n"
+        returnText += " Bandit! 12 O'clock!\n"
     
     # Determine if crew is fast
     modifier = bomberData["Skill"]

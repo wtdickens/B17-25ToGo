@@ -14,7 +14,7 @@ import DetermineEvent
 from B17Dice import d10()
 
 # Get year for mission
-year = io.GetInt((1942,1944), "What year for your mission (1942-44")
+year = io.GetInt(1942, 1944, "What year for your mission (1942-44")
 
 # Load data for the mission year
 DataDict = Data(year)
@@ -35,35 +35,46 @@ for i in range(25):
     for encounter in encounters:
         
         if encounter == "2Bandits":
-            AttackResults, dataDict = BanditAttack(year, 
-                                                   position, 
-                                                   event, 
-                                                   dataDict
-                                                   )
+            AttackResults, dataDict, shotDown = BanditAttack(year, 
+                                                             position, 
+                                                             event, 
+                                                             dataDict
+                                                             )
             io.Report(AttackResults)
-            AttackResults, dataDict = BanditAttack(year, 
-                                                   position, 
-                                                   event, 
-                                                   dataDict
-                                                   )
+            AttackResults, dataDict, shotDown = BanditAttack(year, 
+                                                             position, 
+                                                             event, 
+                                                             dataDict
+                                                             )
             io.Report(AttackResults)
             
         elif encounter == "Bandit":
             io.Report(AttackResults)
-            AttackResults, dataDict = BanditAttack(year, 
-                                                   position, 
-                                                   event, 
-                                                   dataDict
-                                                   )
+            AttackResults, dataDict, shotDown = BanditAttack(year, 
+                                                             position, 
+                                                             event, 
+                                                             dataDict
+                                                             )
             io.Report(AttackResults)
             
         elif encounter == "Flack":
-            FlackResult, dataDict = FlackAttack(DataDict)
+            FlackResult, dataDict, shotDown = FlackAttack(DataDict)
             io.Report(FlackResult)
             
         elif encounter == "BombRun":
             BombResult, dataDict = BombRun(DataDict)
             io.Report(BombResult)
+        
+        if shotDown:
+            break
+        
+    if shotDown:
+        io.Report("That is the end of the war for you.")
+        break
+
+if not shotDown:    
+    io.Report("Congratulations!/nYou completed 25 missions./nNow back /
+              to the States to sell war bonds!")
             
             
             
