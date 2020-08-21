@@ -17,7 +17,7 @@ from B17Dice import d10()
 year = io.GetInt(1942, 1944, "What year for your mission (1942-44")
 
 # Load data for the mission year
-DataDict = Data(year)
+DataDict = Data()
 
 # Loop over 25 missions in game
 for i in range(25):

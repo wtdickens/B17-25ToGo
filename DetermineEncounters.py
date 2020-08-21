@@ -12,8 +12,8 @@ def DetermineEncouter(year):
 
     Returns
     -------
-    Encounters : string
-        String containing encounters for mission
+    Encounters : list
+        List containing encounters for mission
 
     @author: wtdic
     """
@@ -42,26 +42,26 @@ def DetermineEncouter(year):
         FlackProb2 = 3
         2ndBandit2 = 3
 
-    EncounterString = []
+    Encounters = []
     
     BanditPull = d10()
     if BanditPull <= 2ndBanditProb:
-        EncounterString.append("2Bandits")
+        Encounters.append("2Bandits")
     elif BanditPull <= BanditProb:
-        EncounterString.append("Bandit")
+        Encounters.append("Bandit")
         
     if d10() <= FlackProb:
-        EncounterString.append("Flack")
+        Encounters.append("Flack")
         
-    EncounterString.append("BombRun")
+    Encounters.append("BombRun")
     
     if d10() <= FlackProb2:
-        EncounterString.append("Flack")
+        Encountes.append("Flack")
     
     BanditPull = d10()
     if BanditPull <= 2ndBandit2:
-        EncounterString.append("2Bandits")
+        Encounters.append("2Bandits")
     elif BanditPull <= BanditProb2:
-        EncounterString.append("Bandit")
+        Encounters.append("Bandit")
         
 return(EncounterString)
