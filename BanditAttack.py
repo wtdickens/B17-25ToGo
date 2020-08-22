@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-def BanditAttack(year, eventDict, dataDict):
+def BanditAttack(year, position, eventDict, dataDict):
     """
     Created on Sun Jul 26 13:44:49 2020
 
@@ -10,6 +10,8 @@ def BanditAttack(year, eventDict, dataDict):
     ----------
     year : python integer (1942-44)
         The year the action is taking place
+    position : string
+        Position of the bomber in the formation (middle, front, rear, lead)
     eventDict: python dictionary
         Dictionary containing the adjustments due to the event
     dataDict : Python dictionary
@@ -17,13 +19,13 @@ def BanditAttack(year, eventDict, dataDict):
 
     Returns
     -------
-    outcome : python string
+    outcome :  string
         Text message describing the outcome
     
-    dataDict : python dictionary
+    dataDict :  dictionary
         updated data dictionary
     
-    shotDown : python Boolean
+    shotDown :  Boolean
         was bomber shot down?
 
     @author: wtdic
@@ -47,17 +49,21 @@ def BanditAttack(year, eventDict, dataDict):
     # Set shot Down status to false    
     shotDown = False
 
-    # Determine if attack on bomber takes place
+    #############################################
+    # Determine if attack on bomber takes place #
+    #############################################
+    
     # Find modifier for bandit attack on plane
     modifier = 0  
     if year == 1942:  # Modify for year
         modifier = -2
     elif year == 1944:
         modifier = -1
-        damageStatus != "undamaged"  # Modify for damaged status
-        modifier += 5
- 
-    position = bomberData["Position"] # Modify for position in formation
+    
+    if damageStatus == "damaged":  # Modify for damaged status
+        modifier += 4
+     
+    # Modify for position in formation
     if position == "lead":
         modifier += 3
     elif position == "front":
@@ -69,7 +75,7 @@ def BanditAttack(year, eventDict, dataDict):
 
     if roll < 8:  # No attack
         # No bandit attack. Return safe text.
-        return("OK\nBomber Group wards off attack. You are safe for now.")
+        return("OK\nBomber Group wards off attack.\nYou are safe for now.")
     else:
         #########################################
         # Bomber is attacked.  Compute Results. #
@@ -89,9 +95,10 @@ def BanditAttack(year, eventDict, dataDict):
             modifier = -2
         else:
             modifier = 0
-        
+                
         roll = modifier + d10() # Roll for direction
-        if roll < 4 or event == 3:
+        
+        if roll < 4 or eventDict["EventSwitches"]["ReadOnly"]:
             attackDirection = "rear"
             returnText += " Bandit! 6 O'clock!\n"
         elif roll <6:
