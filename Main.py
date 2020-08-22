@@ -8,9 +8,10 @@ This program runs the B17 25 mission simulator
 
 @author: wtdic
 """
+
 from B17Data import Data
 import B17io as io
-import DetermineEvent
+from DetermineEvent import DetermineEvent
 from B17Dice import d10()
 
 # Get year for mission
@@ -45,7 +46,7 @@ for i in range(25):
     if eventData["Bump2Lead"]:
         position = "lead"
         
-    dataDict["BomberData"]["Skill"] = position
+    dataDict["BomberData"]["Position"] = position
     
     # Determine encounters
     encounters = DetermineEcounter(year)
