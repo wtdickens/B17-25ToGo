@@ -92,12 +92,19 @@ Report(ReportText):
         
     Returns
     -------
-    outString : Integer
+    nothing
     """
-   
-    outString = input(requestText)
-    
-    return(checkedInt)
+
+    while True:
+        location = outString.find("\n")
+        if location == -1:
+            location = len(outString)
+            break
+        print(outString[:location])
+        input("press enter to continue")
+        outString = outString[location + 1:]
+        
+        
         
    
         
