@@ -70,7 +70,7 @@ for i in range(25):
                                                                 dataDict
                                                                 )
                 
-            AttackResults += "\nF$%^&$ no! Here comes another!"
+            AttackResults += "\nF%$#@# no! Here comes another!"
             io.Report(AttackResults)
             AttackResults, dataDict, shotDown = BanditAttack(year, 
                                                              position, 
@@ -93,14 +93,6 @@ for i in range(25):
                                                              event, 
                                                              dataDict
                                                              )
-            
-            if eventDict["EventSwitches"]["BanditAttack2"]:  
-                AttackResults += "\nHere he comes again!"
-                AttackResults, dataDict, shotDown = BanditAttack(year,
-                                                                position,
-                                                                EventResult, 
-                                                                dataDict
-                                                                )
             io.Report(AttackResults)
             
         elif encounter == "Flack":

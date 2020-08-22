@@ -129,35 +129,33 @@ def BanditAttack(year, position, eventDict, dataDict):
         # Bomber crew fires first
         if fastCrew:
             banditStatus, returnText = bomberFires(position,
-                                                   event,
+                                                   eventData,
                                                    banditDefense,
                                                    bomberData, 
                                                    returnText,
                                                    dataDict
                                                    )
             if banditStatus = "OK":
-                shotDown, returnText, dataDict = banditFires(position,
-                                                             eventData,
+                shotDown, returnText, dataDict = banditFires(eventData,
                                                              returnText,
                                                              dataDict
                                                              )
         
         # Bandit fires if crew is slow
         else:
-            shotDown, returnText, dataDict = banditFires(position,
-                                                         eventData,
+            shotDown, returnText, dataDict = banditFires(eventData,
                                                          returnText,
                                                          dataDict
                                                          )
             if not shotDown:
                 banditStatus, returnText = bomberFires(position,
-                                                       event,
+                                                       eventData,
                                                        banditDefense,
                                                        bomberData, 
                                                        returnText,
                                                        dataDict
                                                        )
-        
+    return(returnText, dataDict, shotDown)
             
 
                             
