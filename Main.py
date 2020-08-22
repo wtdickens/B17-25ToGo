@@ -19,6 +19,8 @@ year = io.GetInt(1942, 1944, "What year for your mission (1942-44")
 # Load data for the mission year
 DataDict = Data()
 
+DataDict = playerSetUp(DataDict)
+
 # Loop over 25 missions in game
 for i in range(25):
     
